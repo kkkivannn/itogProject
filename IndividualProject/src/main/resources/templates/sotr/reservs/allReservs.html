@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сотрудники</title>
+</head>
+<body>
+<div th:insert="blocks/headerEmpl"></div>
+<h1>Брони</h1>
+<div th:switch="${reservs}" class="container">
+    <div th:case="*">
+        <table >
+            <tr>
+                <th>Гость</th>
+                <th>Номер</th>
+                <th>Начало</th>
+                <th>Конец</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="reserv : ${reservs}">
+                <td th:text="${reserv.userModel.username}"></td>
+                <td th:text="${reserv.numberModel.numbNumber}"></td>
+                <td th:text="${reserv.start}"></td>
+                <td th:text="${reserv.end}"></td>
+                <td><a th:href="@{/editReserv/{id}(id=${reserv.id})}">EDIT</a></td>
+                <td><a th:href="@{/deleteReserv/{id}(id=${reserv.id})}" method="post">Удалить</a></td>
+            </tr>
+        </table>
+    </div>
+    <p class="my-5"><a href="/newReserv">Создать бронь</a></p>
+    <a th:href="@{/homeEmployee}">Назад</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="blocks/headerEmpl"></div>
+<h1>Добавить запись</h1>
+<div class="container">
+<form action="#" th:action="@{/addReservServ}" th:object="${reservServ}" method="post">
+    <label for="role">Название:</label>
+    <select id="role" th:field="*{service}">
+        <option th:each="service : ${allServices}" th:value="${service.id}" th:text="${service.name}"></option>
+    </select>
+    <label for="client">Клиент:</label>
+    <select id="client" th:field="*{user}">
+        <option th:each="user : ${allUsers}" th:value="${user.id}" th:text="${user.username}"></option>
+    </select>
+    <label for="date">Дата:</label>
+    <input type="date" th:field="*{dateServ}"  id="date" placeholder="Дата"  required><br>
+    <span th:if="${#fields.hasErrors('dateServ')}" th:errors="*{dateServ}" ></span>
+    <button type="submit">Создать</button>
+</form>
+<a th:href="@{/allReservServ}">Назад</a>
+</div>
+</body>
+</html>

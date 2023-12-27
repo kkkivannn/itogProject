@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Бронь</title>
+</head>
+<body>
+<div th:insert="blocks/headerEmpl"></div>
+<h1>Добавить бронь</h1>
+<div class="container">
+    <form action="#" th:action="@{/addReserv}" th:object="${reserv}" method="post">
+        <label for="role">Гость:</label>
+        <select id="role" th:field="*{userModel}">
+            <option th:each="user : ${allUsers}" th:value="${user.id}" th:text="${user.username}"></option>
+        </select>
+        <label for="client">Номер:</label>
+        <select id="client" th:field="*{numberModel}">
+            <option th:each="numb : ${allNumbs}" th:value="${numb.id}" th:text="${numb.numbNumber}"></option>
+        </select>
+        <label for="dateS">Начало:</label>
+        <input type="date" th:field="*{start}"  id="dateS" placeholder="Дата"  required><br>
+        <span th:if="${#fields.hasErrors('start')}" th:errors="*{start}" ></span>
+        <label for="dateS">Конец:</label>
+        <input type="date" th:field="*{end}"  id="dateF" placeholder="Дата"  required><br>
+        <span th:if="${#fields.hasErrors('end')}" th:errors="*{end}" ></span>
+        <button type="submit">Создать</button>
+    </form>
+    <a th:href="@{/allReservServ}">Назад</a>
+</div>
+</body>
+</html>

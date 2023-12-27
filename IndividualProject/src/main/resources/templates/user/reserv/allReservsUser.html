@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь</title>
+</head>
+<body>
+<div th:insert="blocks/headerUser"></div>
+<h1>Мои брони</h1>
+<div th:switch="${reservations}" class="container my-5">
+<div th:case="*">
+    <table >
+        <tr>
+            <th>Начало</th>
+            <th>Конец</th>
+            <th>Номер</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="reservation : ${reservations}">
+            <td th:text="${reservation.start}"></td>
+            <td th:text="${reservation.end}"></td>
+            <td th:if="${reservation.numberModel != null}" th:text="${reservation.numberModel.numbNumber}"></td>
+            <td><a th:href="@{/editReservUser/{id}(id=${reservation.id})}">EDIT</a></td>
+            <td><a th:href="@{/deleteReservUser/{id}(id=${reservation.id})}">Удалить</a></td>
+        </tr>
+    </table>
+</div>
+<p class="my-5"><a href="/newReservUser">Забронировать</a></p>
+</div>
+</body>
+</html>

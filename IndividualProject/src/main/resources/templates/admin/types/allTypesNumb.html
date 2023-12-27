@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ</title>
+    <style>
+        entire {
+            margin-top: 70px;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="blocks/headerAdmin"></div>
+<h1>Типы номеров</h1>
+<div th:switch="${types}" class="entire">
+    <div th:case="*">
+        <table >
+            <tr>
+                <th>Название</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="type : ${types}">
+                <td th:text="${type.name}"></td>
+                <td><a th:href="@{/editType/{id}(id=${type.id})}">EDIT</a></td>
+                <td><a th:href="@{/deleteType/{id}(id=${type.id})}" method="post">Удалить</a></td>
+            </tr>
+        </table>
+    </div>
+    <p class="my-5"><a href="/newType">Создать тип номера</a></p>
+</div>
+</body>
+</html>

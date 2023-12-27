@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="blocks/headerAdmin"></div>
+<h1>Изменить номер</h1>
+<div class="container">
+    <form action="#" th:action="@{/updateNumber/{id}(id=${number.id})}" th:object="${number}" method="post">
+        <label for="name">Номер:</label>
+        <input type="text" th:field="*{numbNumber}"  id="name" placeholder="Yjvth" required><br>
+        <span th:if="${#fields.hasErrors('numbNumber')}" th:errors="*{numbNumber}" ></span>
+        <label for="surname" >Цена:</label>
+        <input type="number" th:field="*{cost}"  id="surname" placeholder="Name" required><br>
+        <span th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}" ></span>
+        <select id="role" th:field="*{types}">
+            <option th:each="type : ${allTypes}" th:value="${type.id}" th:text="${type.name}"></option>
+        </select>
+        <button type="submit">Сохранить</button>
+    </form>
+    <a th:href="@{/allNumbers}">Назад</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="blocks/headerAdmin"></div>
+<h1>Изменить тип номера</h1>
+<div class="container">
+    <form action="#" th:action="@{/updateType/{id}(id=${type.id})}" th:object="${type}" method="post">
+        <label for="name">Название:</label>
+        <input type="text" th:field="*{name}"  id="name" placeholder="Название" required><br>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span>
+        <button type="submit">Сохранить</button>
+    </form>
+    <a th:href="@{/allTypesNumb}">Назад</a>
+</div>
+</body>
+</html>

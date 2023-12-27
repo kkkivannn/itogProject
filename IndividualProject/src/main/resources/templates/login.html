@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTH</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .login-container {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    .login-container h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .login-container label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 95%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .login-container input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .login-container input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .error-message {
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+<div class="login-container">
+  <h1>Авторизация</h1>
+  <div th:if="${param.error}" class="error-message">
+    Неверное имя пользователя или пароль.
+  </div>
+  <form th:action="@{/login}" method="post">
+    <div><label>Логин: <input type="text" name="username"/> </label></div>
+    <div><label>Пароль: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Авторизация"/></div>
+  </form>
+  <a href="/registration">Регистрация</a>
+</div>
+</body>
+</html>

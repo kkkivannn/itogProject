@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ</title>
+</head>
+<body>
+<div th:insert="blocks/headerAdmin"></div>
+<h1>Услуги</h1>
+<div th:switch="${services}" class="container my-5">
+    <div th:case="*">
+        <table >
+            <tr>
+                <th>Название</th>
+                <th>Цена</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="service : ${services}">
+                <td th:text="${service.name}"></td>
+                <td th:text="${service.cost}"></td>
+                <td><a th:href="@{/editService/{id}(id=${service.id})}">EDIT</a></td>
+                <td><a th:href="@{/deleteService/{id}(id=${service.id})}" method="post">Удалить</a></td>
+            </tr>
+        </table>
+    </div>
+    <p class="my-5"><a href="/newService">Создать услугу</a></p>
+</div>
+</body>
+</html>

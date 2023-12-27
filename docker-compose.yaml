@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  #  restaurant-rest-api:
+  ##    build:
+  ##      dockerfile: Dockerfile
+  #    environment:
+  #      - DB_PASSWORD=root
+  #    depends_on:
+  #      - db_auth
+  #    command: ./wait-for-postgres.sh db_auth ./restaurant-rest-api
+  #    ports:
+  #      - 8000:8000
+  db_auth:
+    container_name: "itog"
+    #    volumes:
+    #      - ./.database/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5436:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=admin
+    image: postgres:16.0-alpine
+#  adminer:
+#    restart: always
+#    image: adminer
+#    ports:
+#      - 22876:8080
+#    depends_on:
+#      - db_auth

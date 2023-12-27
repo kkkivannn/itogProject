@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="blocks/headerAdmin"></div>
+<h1>Изменить пользователя</h1>
+<div class="container">
+  <form action="#" th:action="@{/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <label for="name">Почта:</label>
+    <input type="text" th:field="*{username}"  id="name" placeholder="Name" required><br>
+    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>
+    <label for="surname" >Имя:</label>
+    <input type="text" th:field="*{nameUs}"  id="surname" placeholder="Name" required><br>
+    <span th:if="${#fields.hasErrors('nameUs')}" th:errors="*{nameUs}" ></span>
+    <label for="email" >Фамилия:</label>
+    <input type="text" th:field="*{usernameUs}"  id="email" placeholder="Email" required><br>
+    <span th:if="${#fields.hasErrors('usernameUs')}" th:errors="*{usernameUs}" ></span>
+    <select id="role" name="role">
+      <option th:each="role : ${T(com.example.individualproject.models.RoleEnum).values()}"
+              th:value="${role}" th:text="${role}"></option>
+    </select><br>
+    <button type="submit">Сохранить</button>
+  </form>
+  <a th:href="@{/allUsers}">Назад</a>
+</div>
+</body>
+</html>

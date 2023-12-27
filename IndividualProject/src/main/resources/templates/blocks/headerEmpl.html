@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background: #5ce7ff;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #5cff6a;
+            font-size: 17px;
+        }
+
+        header {
+            background: #9254ff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 8px;
+        }
+
+        .head {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 900;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .head_links {
+            list-style: none;
+        }
+
+        .head_links li{
+            display: inline-block;
+            padding: 0px 20px;
+        }
+
+        .head_links li a {
+            transition: all 0.3s ease 0s;
+            position: relative;
+            color: #5cff6a;
+        }
+
+        .head_links li a:hover::before {
+            transform: scaleX(1);
+        }
+        button {
+            background: #5cff6a;
+            border-radius: 20px !important;
+            padding: 5px 15px;
+            font-size: 16px;
+            color: #9254ff;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid;
+        }
+    </style>
+</head>
+<body>
+<header class="head">
+    <nav>
+        <ul class="head_links">
+            <li><a href="/allReservServ">Услуги</a></li>
+            <li><a href="/allReservEmpl">Брони</a></li>
+            <li><div class="text-end">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-warning">Выход</button>
+                </form>
+            </div></li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>
